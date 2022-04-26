@@ -10,7 +10,7 @@ This document lays out a reference design for deploying VMware Tanzu for Kuberne
 
 > **Note:** This reference design is supported and validated for customers deploying Tanzu Kubernetes Grid 1.4 on Microsoft Azure.
 
-![Tanzu Standard component set](img/tko-on-azure/tkg-overview-azure.png)
+![Tanzu Standard component set](img/tko-on-azure/tkg-overview-azure.svg)
 
 ## Cluster Creation and Management
 
@@ -72,13 +72,13 @@ VMware recommends using one of the following production-level network designs fo
 ### Same Virtual Network
 
 You can set up your networking such that the Tanzu Kubernetes Grid management cluster and workload clusters are in the same VNet as the bootstrap machine. Each cluster is in a separate subnet. The control plane and worker nodes are also placed in separate subnets.
-![TKG on Azure (Single VNet)](img/tko-on-azure/image005.png)
+![TKG on Azure (Single VNet)](img/tko-on-azure/one-vnet.svg)
 
 ### Separate Virtual Networks
 
 The following design uses a hub-and-spoke model. The Tanzu Kubernetes clusters are separated into different VNets. This network design requires that the corresponding VNets are peered with one another so that the management cluster can correctly communicate with the workload clusters. This approach is recommended by Microsoft.
 
-![TKG on Azure (Two VNets Peered)](img/tko-on-azure/image006.png)
+![TKG on Azure (Two VNets Peered)](img/tko-on-azure/two-vnets.svg)
 
 ### Considerations
 
@@ -218,7 +218,7 @@ Tanzu Mission Control provides the following capabilities:
   * Data protection: managing Velero deployment, configuration, and schedule to ensure that cluster manifests and persistent volumes are backed up and restorable
   * Inspection: running a Sonobouy conformance check suite to ensure Kubernetes cluster functionality
 
-![VMware Tanzu Mission Control - global policy control plane diagram](img/tko-on-azure/tmc-global-policy-control-plane.png)
+![VMware Tanzu Mission Control - global policy control plane diagram](img/tko-on-azure/tmc-global-policy-control-plane.svg)
 
 For a complete list of features that Tanzu Mission Control includes with Tanzu, see [this chart](https://content.cdntwrk.com/files/aT0xMjk5NjY3JnY9OSZpc3N1ZU5hbWU9dG1jLWNvbXBhcmlzb24tY2hhcnQmY21kPWQmc2lnPTc2YTA2N2E4MWRjMmVkNjE0ZDcwMTlmNjc4NjhmMjI4).  
 
@@ -248,7 +248,7 @@ Pinniped consists of following components:
 
 The following diagram shows the Pinniped authentication flow with an external IDP. In the diagram, the blue arrows represent the authentication flow between the workload cluster, the management cluster, and the external IDP. The green arrows represent Tanzu CLI and `kubectl` traffic between the workload cluster, the management cluster, and the external IDP.
 
-![Authentication with pinniped](img/tko-on-azure/authwith-Pinniped.png)
+![Authentication with pinniped](img/tko-on-azure/authwith-Pinniped.svg)
 
 See the [Pinniped Docs](https://pinniped.dev/docs/) for more information on how to integrate Pinniped into Tanzu Kubernetes Grid with OIDC providers and LDAP.
 
